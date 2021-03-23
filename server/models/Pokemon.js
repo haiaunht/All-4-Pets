@@ -22,11 +22,9 @@ class Pokemon {
       const client = await pool.connect()
       const result = await client.query("SELECT * FROM pet_types JOIN adoptable_pets ON pet_types.id = adoptable_pets.type_id;")
 
-      //get the results
       const pokemonData = result.rows
       const pokemon = pokemonData.map(note => new this(note))
 
-      //release the connection back to the pool
       client.release()
 
       return pokemon
@@ -35,5 +33,15 @@ class Pokemon {
       pool.end()
       //throw(err)
     }
+  }
+
+  static async findById() {
+    try {
+
+    } catch {
+      console.log(err)
+      pool.end()
+      //throw(err)
+    }    
   }
 }
