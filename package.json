@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "webpack.config.js",
-  "type": "module",
+  
   "scripts": {
-    "dev": "./node_modules/.bin/nodemon server/server.js",
-    "dev:debug": "./node_modules/.bin/nodemon --inspect-brk server/server.js",
+    "dev": "./node_modules/.bin/nodemon server/app.js",
+    "dev:debug": "./node_modules/.bin/nodemon --inspect-brk server/app.js",
     "dev:client": "node_modules/.bin/webpack-dev-server --host 0.0.0.0",
     "webpack": "node_modules/.bin/webpack --config ./webpack.config.js",
     "test": "./node_modules/.bin/jest",
-    "db:import": "psql <replace this with your DB name> < db/schema.sql",
+    "db:import": "psql pokedex < ./server/db/schema.sql",
     "db:seed": "node ./server/bin/seed.js"
   },
 
@@ -64,6 +64,7 @@
     "sass-loader": "^6.0.2",
     "style-loader": "^0.13.2",
     "webpack": "~2.3.1",
+    "line-reader": "^0.4.0",
     "write-file-webpack-plugin": "~4.2.0",
     "react-hot-loader": "^4.12.21"
   }
