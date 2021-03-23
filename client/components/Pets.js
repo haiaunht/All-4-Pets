@@ -1,13 +1,36 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
 const Pets = () => {
-  const [pets, setPets] = useState([
-    { id: 1, type: "Puppies", color: "#daccb4", imgURL: "./images/Puppies.png" },
-    { id: 2, type: "Pokemon", color: "#f1ccd5", imgURL: "./images/Pokemon.png" }
-  ])
+  const [pets, setPets] = useState([{ id: 1, type: "Puppies" }])
   const [selectedId, setSelectedId] = useState(0)
   const [sectionColor, setSectionColor] = useState("section")
+
+  const getPets = async () => {
+    try {
+      const response = await fetch("/api/v1/pets")
+      if (!response.ok) {
+        const errorMessage = `${response.status} (${response.statusText})`
+        const error = new Error(errorMessage)
+        throw error
+      }
+
+      const petsData = await response.json()
+
+      setPets(petsData.pets)
+    } catch (error) {
+      console.error(`Error in fetch: ${error.message}`)
+    }
+  }
+
+  useEffect(() => {
+    getPets()
+    console.log(pets)
+  }, [])
+
+  console.log(selectedId)
+  console.log(pets)
+
   const handleClick = (id, type) => {
     setSelectedId(id - 1)
     let color = `section ${type}`
@@ -15,16 +38,28 @@ const Pets = () => {
     console.log(sectionColor)
   }
 
-  const petsLink = pets.map(pet => (
-    <b key={pet.id}>
-      <Link to={`/pets/${pet.type}`}>View {pet.type}</Link>
-    </b>
-  ))
+  const petsLink = pets.map(pet => {
+    let petLink = pet.type
+    console.log("pet link: " + petLink)
+    return (
+      <b key={pet.id}>
+        <Link to={`/pets/${pet.type}`}>View {pet.type}</Link>
+      </b>
+    )
+  })
+
+  // let imgURL: "./images/Puppies.png"
+  console.log("pets: " + pets)
+  // console.log("pets selectedId: " + pets[selectedId])
+
+  let petType = pets[selectedId].type
+  let imgURL = `./images/${petType}.png`
 
   const petThumbnails = pets.map(pet => {
+    let imgURL = `./images/${pet.type}.png`
     return (
       <li key={pet.id}>
-        <img src={pet.imgURL} alt={pet.type} onClick={() => handleClick(pet.id, pet.type)} />
+        <img src={imgURL} alt={pet.type} onClick={() => handleClick(pet.id, pet.type)} />
       </li>
     )
   })
@@ -43,7 +78,7 @@ const Pets = () => {
         </div>
         <div className="image-box">
           <Link to={`/pets/${pets[selectedId].type}`}>
-            <img className="pet" src={pets[selectedId].imgURL} alt={pets[selectedId].type} />
+            <img className="pet" src={imgURL} alt={pets[selectedId].type} />
           </Link>
         </div>
       </div>
