@@ -15,7 +15,6 @@ const petPath = path.join(__dirname, "../../pet_type.txt")
 
 class Seeder {
   static async seed() {
-    // your seeder code here
     const pet_types= [
       {type:"Puppies", description:"Adorable Puppies"},
       {type:"Pokemon", description:"Your best friend"}
