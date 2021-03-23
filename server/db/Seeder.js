@@ -4,7 +4,8 @@ import LineReader from "line-reader"
 import { fileURLToPath } from "url"
 
 const pool = new pg.Pool({
-  connectionString: "postgres://postgres:password@localhost:5432/pokedex" })
+  connectionString: "postgres://postgres:password@localhost:5432/pokedex" 
+})
 
   //setup __dirname to work with ESM
 const __filename = fileURLToPath(import.meta.url)
