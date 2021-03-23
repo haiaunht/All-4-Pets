@@ -7,6 +7,6 @@ rootRouter.use()
 
 rootRouter.use("/", clientRouter)
 
-
+rootRouter.use("/api/v1/pokemon", pokemonRouter)
 
 export default rootRouter

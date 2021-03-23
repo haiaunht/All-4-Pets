@@ -1,29 +1,29 @@
-
 import React, { useState , useEffect } from "react"
 import PokemonTile from "./PokemonTile"
 
 const PokemonIndexPage = props => {
   const [pokemons, setPokemons] = useState([])
 
-  const fetchPokemon = async () => {
-    try {
-      const response = await fetch('/api/v1/pokemon')
-      if (!response.ok) {
-        const errorMessage = `${response.status} (${response.statusText})`
-        const error = new Error(errorMessage)
-        throw(error)
+  useEffect(() => {
+    async function fetchPokemon ()  {
+      try {
+        const response = await fetch('/api/v1/pokemon')
+        if (!response.ok) {
+          const errorMessage = `${response.status} (${response.statusText})`
+          const error = new Error(errorMessage)
+          throw(error)
+        }
+
+        const body = await response.json()
+        setPokemons(body.pokemon)
+      } catch(err) {
+        console.log(`Error in fetch: ${err.message}`)
       }
-
-      const body = await response.json()
-      setPokemons(body.pokemon)
-    } catch(err) {
-      console.log(`Error in fetch: ${err.message}`)
     }
-  }
-
-  useEffect( () => {
     fetchPokemon()
   }, [])
+
+  
 
   const allPokemon = pokemons.map( pokemon => {
     return (

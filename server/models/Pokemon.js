@@ -31,17 +31,6 @@ class Pokemon {
     } catch(err) {
       console.log(err)
       pool.end()
-      //throw(err)
     }
-  }
-
-  static async findById() {
-    try {
-
-    } catch {
-      console.log(err)
-      pool.end()
-      //throw(err)
-    }    
-  }
+  }  
 }

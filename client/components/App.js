@@ -21,7 +21,7 @@ const App = props => {
           <Route exact path="/pets" component={Pets} />
           <Route exact path="/pets/puppies" component={PuppiesIndexPage} />
           <Route exact path="/pets/puppies/:id" component={PuppiesShowPage} />
-          <Route exact path="/pets/pokemon" component={PokemonIndexPage} />
+          <Route exact path="/pokemon" component={PokemonIndexPage} />
           <Route exact path="/pets/pokemon/:id" component={PokemonShowPage} />
           <Route exact path="/adoptions/new" component={SurrenderForm} />
           <Route exact path="/about" component={About} />
