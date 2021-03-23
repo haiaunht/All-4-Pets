@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 client/public/bundle.js
+=======
+<<<<<<< HEAD
+./client/public/bundle.js
+=======
+client/public/bundle.js
+>>>>>>> master
+>>>>>>> PokemonIndex
 node_modules/*
 yarn.lock
 .DS_store

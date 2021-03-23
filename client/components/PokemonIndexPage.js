@@ -1,4 +1,3 @@
-
 import React, { useState , useEffect } from "react"
 import PokemonTile from "./PokemonTile"
 
@@ -7,7 +6,8 @@ const PokemonIndexPage = props => {
 
   const fetchPokemon = async () => {
     try {
-      const response = await fetch('/api/v1/pokemon')
+      const response = await fetch('/api/v1/pets/pokemon')
+      console.log(response)
       if (!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`
         const error = new Error(errorMessage)
@@ -15,15 +15,16 @@ const PokemonIndexPage = props => {
       }
 
       const body = await response.json()
+      console.log(body.pokemon)
       setPokemons(body.pokemon)
     } catch(err) {
       console.log(`Error in fetch: ${err.message}`)
     }
   }
-
-  useEffect( () => {
+    
+  useEffect(() => {
     fetchPokemon()
-  }, [])
+  },[])
 
   const allPokemon = pokemons.map( pokemon => {
     return (
