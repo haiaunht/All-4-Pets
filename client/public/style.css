@@ -8,10 +8,6 @@
   font-family: "Poppins", sans-serif;
 }
 
-div {
-  margin-top: 130px;
-}
-
 .section {
   position: relative;
   width: 100%;
@@ -217,7 +213,6 @@ nav ul li:hover a {
 
 .team-box .member {
   position: relative;
-  background-color: #000;
   min-height: 300px;
   width: 250px;
   margin: 0 auto;
