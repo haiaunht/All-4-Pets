@@ -1,1 +1,274 @@
 /* your styles, here */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+div {
+  margin-top: 130px;
+}
+
+.section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #daccb4;
+  transition: 0.5s;
+}
+
+/* navbar */
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+nav .brand {
+  position: relative;
+  font-size: 2em;
+  font-weight: 700;
+}
+
+nav ul {
+  position: relative;
+  display: flex;
+  list-style: none;
+}
+
+nav ul li a {
+  display: inline-block;
+  color: #555;
+  font-weight: 400;
+  margin-left: 20px;
+  text-decoration: none;
+  padding: 10px 20px;
+}
+
+nav ul li:hover a {
+  background-color: #fff;
+}
+
+/* index-page */
+
+.section .content {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section .content .text-box {
+  position: relative;
+  max-width: 600px;
+}
+
+.section .content .text-box h2 {
+  color: #333;
+  font-size: 3em;
+  line-height: 1.5em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.section .content .text-box p {
+  color: #555;
+}
+
+.section .content .text-box a {
+  display: inline-block;
+  margin-top: 20px;
+  margin-right: 30px;
+  padding: 8px 20px;
+  background-color: #fff;
+  border-radius: 40px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #333;
+}
+
+.section .content .text-box a:hover {
+  opacity: 0.6;
+}
+
+.section .content .image-box {
+  width: 600px;
+  display: flex;
+  padding-right: 50px;
+  margin-top: 50px;
+  justify-content: flex-end;
+}
+
+.section .content .image-box img {
+  max-width: 300px;
+}
+
+.pet-thumbnail {
+  position: absolute;
+  left: 45%;
+  bottom: 150px;
+  transform: translate(-50%, -50%);
+  display: flex;
+}
+
+.pet-thumbnail li {
+  text-decoration: none;
+  display: inline-block;
+  margin: 0 20px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.pet-thumbnail li:hover {
+  transform: translateY(-15px);
+}
+
+.pet-thumbnail li img {
+  max-width: 150px;
+  max-height: 150px;
+}
+
+.social-icons {
+  position: absolute;
+  top: 50%;
+  right: 30px;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  flex-direction: column;
+}
+
+.social-icons li a {
+  display: inline-block;
+  margin: 5px 0;
+  color: #333;
+  transform: scale(0.6);
+  font-size: 3em;
+}
+
+.social-icons li:hover a {
+  opacity: 0.6;
+}
+
+/* About - page */
+
+.container {
+  background-color: #fff;
+  padding: 100px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container .content {
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+.max-width-800 {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.max-width-800 h3 {
+  font-size: 40px;
+  font-weight: 200;
+  margin-bottom: 10px;
+}
+
+.max-width-800 p {
+  position: relative;
+  font-size: 18px;
+  font-weight: 300;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.team-box {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 30px;
+  max-width: 100%;
+  margin-top: 40px;
+}
+
+.team-box .member {
+  position: relative;
+  background-color: #000;
+  min-height: 300px;
+  width: 250px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.team-box .member .member-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.team-box .member .member-img img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-box .member:hover .member-details {
+  opacity: 0.8;
+}
+
+.team-box .member .member-details {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+  transition: 0.2s;
+  opacity: 0;
+}
+
+.team-box .member .member-details h2 {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+.team-box .member .member-details h2 span {
+  display: block;
+  font-size: 12px;
+  font-weight: 300px;
+}
