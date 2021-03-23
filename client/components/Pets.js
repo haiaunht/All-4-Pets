@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
 const Pets = () => {
-  const [pets, setPets] = useState([{ id: 1, type: "Puppies" }])
+  const [pets, setPets] = useState([{}])
   const [selectedId, setSelectedId] = useState(0)
   const [sectionColor, setSectionColor] = useState("section")
 
@@ -28,9 +28,6 @@ const Pets = () => {
     console.log(pets)
   }, [])
 
-  console.log(selectedId)
-  console.log(pets)
-
   const handleClick = (id, type) => {
     setSelectedId(id - 1)
     let color = `section ${type}`
@@ -47,10 +44,6 @@ const Pets = () => {
       </b>
     )
   })
-
-  // let imgURL: "./images/Puppies.png"
-  console.log("pets: " + pets)
-  // console.log("pets selectedId: " + pets[selectedId])
 
   let petType = pets[selectedId].type
   let imgURL = `./images/${petType}.png`
