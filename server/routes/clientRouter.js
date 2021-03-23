@@ -1,6 +1,6 @@
 import express from "express"
 
-const router = new express.Router()
+const clientRouter = new express.Router()
 
 const clientRoutes = [
   "/pets",
@@ -9,10 +9,10 @@ const clientRoutes = [
   "/pets/pokemon",
   "/pets/pokemon/:id",
   "/adoptions/new",
-  "/about"
+  "/about",
 ]
-router.get(clientRoutes, (req, res) => {
+clientRouter.get(clientRoutes, (req, res) => {
   res.render("home")
 })
 
-export default router
+export default clientRouter

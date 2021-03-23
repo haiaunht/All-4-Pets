@@ -3,9 +3,10 @@ import Pokemon from "../../../models/Pokemon.js"
 
 const pokemonRouter = new express.Router()
 
-pokemonRouter.get("/", async (req, res) => {
+pokemonRouter.get("/", async (req, res) => {    
   try {
     const pokemon = await Pokemon.findAll()
+    console.log(pokemon)
     res.status(200).json({ pokemon: pokemon })
   } catch (error) {
     console.log(error)
@@ -14,12 +15,13 @@ pokemonRouter.get("/", async (req, res) => {
 })
 
 pokemonRouter.get("/:id", async (req, res) => {
-  try {
-    const pokemonid = await Pokemon.findById(req.params.id)
-    res.status(200).json({ pokemonid: pokemonid })
+  try {    
+    const pokemoncute = await Pokemon.findById(req.params.id)
+       
+    res.json({pokemoncute})
   } catch (error) {
     console.log(error)
-    return res.status(500).json({ errors: error })
+    res.json({ errors: error })
   }
 })
 

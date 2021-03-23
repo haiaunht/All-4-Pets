@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ./client/public/bundle.js
+=======
+client/public/bundle.js
+>>>>>>> master
 node_modules/*
 yarn.lock
 .DS_store

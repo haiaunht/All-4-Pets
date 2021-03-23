@@ -1,5 +1,5 @@
 # Files to ignore when uploading to Launch
 node-group-project.md
-./public/bundle.js
+client/public/bundle.js
 node_modules/*
 .DS_store

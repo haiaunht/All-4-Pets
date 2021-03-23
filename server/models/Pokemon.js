@@ -1,4 +1,3 @@
-import { runInThisContext } from "node:vm"
 import pg from "pg"
 
 const pool = new pg.Pool({
@@ -20,17 +19,36 @@ class Pokemon {
   static async findAll() {
     try {
       const client = await pool.connect()
-      const result = await client.query("SELECT * FROM pet_types JOIN adoptable_pets ON pet_types.id = adoptable_pets.type_id;")
+      const result = await client.query("SELECT * FROM adoptable_pets;")
 
       const pokemonData = result.rows
-      const pokemon = pokemonData.map(note => new this(note))
+      console.log(pokemonData)
+
+      const pokemons = pokemonData.map(poke => new this(poke))
 
       client.release()
 
-      return pokemon
+      return pokemons
     } catch(err) {
       console.log(err)
       pool.end()
     }
   }  
+
+  static async findById(id) {
+    try {
+      const client = await pool.connect()      
+      const result = await client.query("SELECT * FROM adoptable_pets WHERE id= $1", [id])
+      
+      const pokemoncute = new this(result.rows[0])
+      client.release()
+      
+      return pokemoncute
+    } catch (error) {
+      console.error(`Error: ${error}`)
+      pool.end()
+    }
+  }
 }
+
+export default Pokemon

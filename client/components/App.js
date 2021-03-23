@@ -1,6 +1,7 @@
 import React from "react"
 import { hot } from "react-hot-loader/root"
 import { Route, Switch, BrowserRouter } from "react-router-dom"
+import 'regenerator-runtime/runtime'
 
 import Navbar from "./Navbar"
 import Pets from "./Pets"
@@ -17,11 +18,11 @@ const App = props => {
       <BrowserRouter>
         <Navbar />
         <Switch>
-          <Route exact path="/" component={Pets} />
+          {/* <Route exact path="/" component={Pets} /> */}
           <Route exact path="/pets" component={Pets} />
           <Route exact path="/pets/puppies" component={PuppiesIndexPage} />
           <Route exact path="/pets/puppies/:id" component={PuppiesShowPage} />
-          <Route exact path="/pokemon" component={PokemonIndexPage} />
+          <Route exact path="/pets/pokemon" component={PokemonIndexPage} />
           <Route exact path="/pets/pokemon/:id" component={PokemonShowPage} />
           <Route exact path="/adoptions/new" component={SurrenderForm} />
           <Route exact path="/about" component={About} />
