@@ -25,19 +25,15 @@ const Pets = () => {
 
   useEffect(() => {
     getPets()
-    console.log(pets)
   }, [])
 
   const handleClick = (id, type) => {
     setSelectedId(id - 1)
     let color = `section ${type}`
     setSectionColor(color)
-    console.log(sectionColor)
   }
 
   const petsLink = pets.map(pet => {
-    let petLink = pet.type
-    console.log("pet link: " + petLink)
     return (
       <b key={pet.id}>
         <Link to={`/pets/${pet.type}`}>View {pet.type}</Link>

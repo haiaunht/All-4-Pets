@@ -30,7 +30,7 @@
 
 /* navbar */
 
-nav {
+.navbar {
   position: fixed;
   top: 0;
   left: 0;
@@ -43,19 +43,19 @@ nav {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-nav .brand {
+.navbar .brand {
   position: relative;
   font-size: 2em;
   font-weight: 700;
 }
 
-nav ul {
+.navbar ul {
   position: relative;
   display: flex;
   list-style: none;
 }
 
-nav ul li a {
+.navbar ul li a {
   display: inline-block;
   color: #555;
   font-weight: 400;
@@ -64,8 +64,33 @@ nav ul li a {
   padding: 10px 20px;
 }
 
-nav ul li:hover a {
+.navbar ul li:hover a {
   background-color: #fff;
+}
+
+.navbar.scroll {
+  background-color: #abcdef;
+}
+
+.navbar.scroll .brand {
+  position: relative;
+  font-size: 2em;
+  font-weight: 700;
+  color: #fff;
+}
+
+.navbar.scroll ul li a {
+  display: inline-block;
+  color: #fff;
+  font-weight: 400;
+  margin-left: 20px;
+  text-decoration: none;
+  padding: 10px 20px;
+}
+
+.navbar.scroll ul li:hover a {
+  background-color: #fff;
+  color: #abcdef;
 }
 
 /* index-page */
@@ -112,10 +137,13 @@ nav ul li:hover a {
   text-decoration: none;
   text-transform: uppercase;
   color: #333;
+  transition: 0.5s;
 }
 
 .section .content .text-box a:hover {
-  opacity: 0.6;
+  background-color: #333;
+  transform: rotateY(360deg) scale(1.2);
+  color: #fff;
 }
 
 .section .content .image-box {
@@ -133,7 +161,7 @@ nav ul li:hover a {
 .pet-thumbnail {
   position: absolute;
   left: 45%;
-  bottom: 150px;
+  bottom: 40px;
   transform: translate(-50%, -50%);
   display: flex;
 }
@@ -169,14 +197,15 @@ nav ul li:hover a {
 
 .social-icons li a {
   display: inline-block;
-  margin: 5px 0;
-  color: #333;
-  transform: scale(0.6);
-  font-size: 3em;
+  margin: 15px 0;
+  color: #aaa;
+  font-size: 2em;
+  transition: 0.5s;
 }
 
 .social-icons li:hover a {
-  opacity: 0.6;
+  transform: rotateY(360deg) scale(1.5);
+  color: #fff;
 }
 
 /* About - page */
@@ -202,6 +231,7 @@ nav ul li:hover a {
 }
 
 .max-width-800 h3 {
+  margin-top: 50px;
   font-size: 40px;
   font-weight: 200;
   margin-bottom: 10px;
@@ -281,7 +311,269 @@ nav ul li:hover a {
   font-weight: 300px;
 }
 
-.showPokemon {
+/* pet - index page */
+
+.pet {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 30px;
+  max-width: 100%;
+  margin-top: 40px;
+}
+
+.pet .pet-box {
+  width: 300px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+}
+
+.pet .pet-box .pet-img {
+  margin-top: 25px;
+}
+.pet .pet-box .pet-img img {
+  max-width: 200px;
+  margin-bottom: 15px;
+  height: 200px;
+  border-radius: 10px;
+}
+
+.pet .pet-box .pet-details h2 a {
+  font-size: 18px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-decoration: none;
+  color: #000;
+}
+
+.pet-box .pet-more-details:hover {
+  opacity: 0.8;
+}
+
+.pet-box .pet-more-details {
+  position: relative;
+  top: -350px;
+  left: -21px;
+  width: 300px;
+  height: 112%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+  transition: 0.5s;
+  opacity: 0;
+}
+
+.pet-box .pet-more-details a {
+  position: absolute;
+}
+
+/* Pet - Show Page */
+.pet-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  min-height: 800px;
+  background-color: #fff;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  transition: 0.5s;
+}
+
+.pet-container.active {
+  filter: blur(20px);
+  pointer-events: none;
+  user-select: none;
+}
+
+.pet-container .pet-content {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+}
+
+.pet-container .pet-content img {
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.pet-container .pet-content h2 {
+  margin-bottom: 15px;
+  font-size: 40px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #333;
+}
+
+.pet-container .pet-content p {
+  margin-bottom: 10px;
+  color: #555;
+}
+
+#submit-btn,
+.pet-box .pet-more-details a,
+.pet-container .pet-content a {
+  margin-top: 10px;
+  font-size: 20px;
+  color: #fff;
+  background-color: #e91e63;
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 15px;
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+#submit-btn:hover,
+.pet-box .pet-more-details a:hover,
+.pet-container .pet-content a:hover {
+  background-color: #fff;
+  transform: rotateY(360deg) scale(1.2);
+  color: #e91e63;
+}
+
+/* Modal - Form*/
+
+.modal {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100vh;
+  padding: 40px;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.modal.active {
+  height: 100vh;
+  top: 50%;
+  visibility: visible;
+  opacity: 1;
+  transition: 0.5s;
+  z-index: 2;
+}
+
+#form-container {
+  margin-top: 150px;
+}
+
+.form-title {
+  text-align: center;
+  padding: 50px 0 20px;
+}
+
+.form-title h2 {
+  margin: 0;
+  padding: 0;
+  color: #abcdef;
+  text-transform: uppercase;
+  font-size: 36px;
+}
+
+.form-content {
+  width: 50%;
+  height: 500px;
+  margin: 0 auto;
+  border: 2px solid #fff;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+.close-btn {
+  position: absolute;
+  top: 5%;
+  left: 85%;
+  font-size: 1.5em;
+  color: #abcdef;
+  cursor: pointer;
+}
+
+.form-content .form-left-side {
+  float: left;
+  width: 40%;
+  height: 400px;
+  background-size: cover;
+  overflow: hidden;
+  text-align: center;
+}
+
+.form-content .form-left-side img {
+  width: 200px;
+  height: 200px;
+  margin: 80px auto 20px;
+  border-radius: 10px;
+}
+
+.form-content .form-left-side h3 {
+  margin-bottom: 10px;
+  font-size: 40px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: #abcdef;
+}
+
+.form-content .form-left-side p {
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.form-content .form-right-side {
+  position: relative;
+  float: right;
+  width: 60%;
+  height: 400px;
+}
+
+.form-box {
+  width: 100%;
+  padding: 80px 40px;
+  height: 400px;
+  background-color: #fff;
+}
+
+.form-box label {
+  font-weight: bold;
+  color: #abcdef;
+}
+
+.form-box input {
+  margin-bottom: 20px;
+  padding: 0 20px;
+  border: none;
+  border-bottom: 2px solid #abcdef;
+  width: 100%;
+}
+
+.form-box select {
+  margin-bottom: 20px;
+  border: 2px solid #abcdef;
+}
+
+.form-box input[type="submit"] {
+  margin-bottom: 20px;
+  padding: 0 20px;
+  border: none;
+  border-bottom: 2px solid #abcdef;
   width: 80%;
-  margin: 200px auto;
+}
+
+#submit-btn {
+  border: none;
+  font-size: 15px;
 }

@@ -3,29 +3,35 @@ import { Link } from "react-router-dom"
 
 const PokemonTile = props => {
   let statusText
-  const convert = (bool) => {
-    if (bool) {  
-      statusText = 'Yes'
+  const convert = bool => {
+    if (bool) {
+      statusText = "Yes"
     } else {
-      statusText = 'No'
+      statusText = "No"
     }
     return statusText
   }
-  
-  return (     
-    <div className="member">      
-      <Link to={`/pets/pokemon/${props.id}`}>        
-        <h2>{props.name}</h2>        
-      </Link>
-      <hr />
-      <div classNam="member-img">
-          <img src={props.imgUrl} alt={props.name} height="400" weight="300" />
+
+  return (
+    <div className="pet-box">
+      <div className="pet-img">
+        <img src={props.imgUrl} alt={props.name} />
       </div>
-        <p><strong>Age: </strong>{props.age}</p>
-        <p><strong>Vaccination's status: </strong>{convert(props.vaccinationStatus)}</p>
-        <p><strong>{props.name}'s story:</strong> {props.adoptionStory}</p>
-        <p><strong>Adoption status:</strong> {convert(props.adoptionStatus)}</p>
-      <hr />      
+      <div className="pet-details">
+        <div>
+          <h2>
+            <Link to={`/pets/pokemon/${props.id}`}>{props.name}</Link>
+          </h2>
+          <p>
+            Age: {props.age}
+            <br />
+            Vaccination: {convert(props.vaccinationStatus)}
+          </p>
+        </div>
+      </div>
+      <div className="pet-more-details">
+        <Link to={`/pets/pokemon/${props.id}`}>Read more</Link>
+      </div>
     </div>
   )
 }
