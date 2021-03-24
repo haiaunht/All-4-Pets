@@ -10,6 +10,7 @@ import PokemonIndexPage from "./PokemonIndexPage"
 import PokemonShowPage from "./PokemonShowPage"
 import SurrenderForm from "./SurrenderForm"
 import About from "./About"
+import "regenerator-runtime/runtime"
 
 const App = props => {
   return (
