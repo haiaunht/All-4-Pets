@@ -1,7 +1,9 @@
 import pg from "pg"
+
 const pool = new pg.Pool({
   connectionString: "postgres://postgres:password@localhost:5432/pokedex" 
 })
+
 class Pokemon {
   constructor({id, name, imgUrl, img_url, age, vaccinationStatus, vaccination_status, adoptionStory, adoption_story, adoptionStatus, adoption_status, type_id }) {
     this.id = id
@@ -13,6 +15,7 @@ class Pokemon {
     this.adoptionStatus = adoptionStatus || adoption_status
     this.type_id = type_id
   }
+
   static async findAll() {
     try {
       const client = await pool.connect()
@@ -26,6 +29,7 @@ class Pokemon {
       pool.end()
     }
   }  
+
   static async findById(id) {
     try {
       const client = await pool.connect()      
@@ -37,6 +41,7 @@ class Pokemon {
       console.error(`Error: ${error}`)
       pool.end()
     }
-  }
+  }  
 }
+
 export default Pokemon

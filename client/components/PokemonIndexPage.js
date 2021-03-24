@@ -1,7 +1,6 @@
 import React, { useState , useEffect } from "react"
 import PokemonTile from "./PokemonTile"
 
-
 const PokemonIndexPage = props => {
   const [pokemons, setPokemons] = useState([])
   const fetchPokemon = async () => {
@@ -19,9 +18,11 @@ const PokemonIndexPage = props => {
       console.log(`Error in fetch: ${err.message}`)
     }
   }
+
   useEffect(() => {
     fetchPokemon()
   },[])
+
   const allPokemon = pokemons.map( pokemon => {
     return (
       <PokemonTile
@@ -36,6 +37,7 @@ const PokemonIndexPage = props => {
       />
     )
   })
+
   return (
     <div className="row">
       <div className="small-8 small-centered columns">
@@ -45,4 +47,5 @@ const PokemonIndexPage = props => {
     </div>
   )
 }
+
 export default PokemonIndexPage
