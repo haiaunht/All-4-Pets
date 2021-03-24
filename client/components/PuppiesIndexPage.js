@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import PuppyTile from "./PuppyTile"
 
 const PuppiesIndexPage = props => {
@@ -9,39 +9,46 @@ const PuppiesIndexPage = props => {
       if (!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`
         const error = new Error(errorMessage)
-        throw(error)
+        throw error
       }
       const body = await response.json()
       setPuppies(body.puppies)
-    } catch(err) {
+    } catch (err) {
       console.log(`Error in fetch: ${err.message}`)
     }
   }
 
   useEffect(() => {
     fetchPuppies()
-  },[])
+  }, [])
 
-  const allPuppies = puppies.map( puppy => {
+  const allPuppies = puppies.map(puppy => {
     return (
       <PuppyTile
-        key = {puppy.id}
-        id = {puppy.id}
-        name = {puppy.name}
-        imgUrl = {puppy.imgUrl}
-        age = {puppy.age}
-        vaccinationStatus = {puppy.vaccinationStatus}
-        adoptionStatus = {puppy.adoptionStatus}
-        adoptionStory = {puppy.adoptionStory}
+        key={puppy.id}
+        id={puppy.id}
+        name={puppy.name}
+        imgUrl={puppy.imgUrl}
+        age={puppy.age}
+        vaccinationStatus={puppy.vaccinationStatus}
+        adoptionStatus={puppy.adoptionStatus}
+        adoptionStory={puppy.adoptionStory}
       />
     )
   })
 
   return (
-    <div className="row">
-      <div className="small-8 small-centered columns">
-        <h1 className="text-center">Puppies - Which will be your favorite!</h1>
-        {allPuppies}        
+    <div className="container">
+      <div className="content">
+        <div className="max-width-800">
+          <h3>Adorable Puppies</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum labore accusantium fuga
+            quo soluta explicabo quae quas, consequatur ea ad voluptatem porro fugit eligendi
+            cupiditate id ipsa, quam placeat deserunt.
+          </p>
+        </div>
+        <div className="pet">{allPuppies}</div>
       </div>
     </div>
   )
