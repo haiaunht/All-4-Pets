@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
-
 const Pets = () => {
   const [pets, setPets] = useState([{}])
   const [selectedId, setSelectedId] = useState(0)
   const [sectionColor, setSectionColor] = useState("section")
-
   const getPets = async () => {
     try {
       const response = await fetch("/api/v1/pets")
@@ -14,49 +12,38 @@ const Pets = () => {
         const error = new Error(errorMessage)
         throw error
       }
-
       const petsData = await response.json()
-
       setPets(petsData.pets)
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`)
     }
   }
-
   useEffect(() => {
     getPets()
-    console.log(pets)
   }, [])
-
   const handleClick = (id, type) => {
     setSelectedId(id - 1)
     let color = `section ${type}`
     setSectionColor(color)
     console.log(sectionColor)
   }
-
   const petsLink = pets.map(pet => {
-    let petLink = pet.type
-    console.log("pet link: " + petLink)
     return (
       <b key={pet.id}>
         <Link to={`/pets/${pet.type}`}>View {pet.type}</Link>
       </b>
     )
   })
-
   let petType = pets[selectedId].type
   let imgURL = `./images/${petType}.png`
-
   const petThumbnails = pets.map(pet => {
-    let imgURL = `./images/${pet.type}.png`
+    let img = `./images/${pet.type}.png`
     return (
       <li key={pet.id}>
-        <img src={imgURL} alt={pet.type} onClick={() => handleClick(pet.id, pet.type)} />
+        <img src={img} alt={pet.type} onClick={() => handleClick(pet.id, pet.type)} />
       </li>
     )
   })
-
   return (
     <div className={sectionColor}>
       <div className="content">
@@ -96,5 +83,4 @@ const Pets = () => {
     </div>
   )
 }
-
 export default Pets

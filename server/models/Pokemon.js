@@ -19,11 +19,9 @@ class Pokemon {
   static async findAll() {
     try {
       const client = await pool.connect()
-      const result = await client.query("SELECT * FROM adoptable_pets;")
+      const result = await client.query("SELECT * FROM adoptable_pets WHERE type_id = 2;")
 
       const pokemonData = result.rows
-      console.log(pokemonData)
-
       const pokemons = pokemonData.map(poke => new this(poke))
 
       client.release()

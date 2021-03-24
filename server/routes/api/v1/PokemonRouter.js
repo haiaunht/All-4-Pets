@@ -14,13 +14,10 @@ pokemonRouter.get("/", async (req, res) => {
   }
 })
 
-
-
 pokemonRouter.get("/:id", async (req, res) => {
   try {    
-    const pokemoncute = await Pokemon.findById(req.params.id)
-       
-    res.json({pokemoncute})
+    const pokemoncute = await Pokemon.findById(req.params.id)       
+    res.json({pokemoncute:pokemoncute})
   } catch (error) {
     console.log(error)
     res.json({ errors: error })

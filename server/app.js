@@ -8,8 +8,6 @@ import pg from "pg"
 import { fileURLToPath } from "url"
 import rootRouter from "./routes/rootRouter.js"
 
-import rootRouter from "./routes/rootRouter.js"
-
 const app = express()
 
 const __filename = fileURLToPath(import.meta.url)

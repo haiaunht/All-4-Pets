@@ -2,29 +2,30 @@ import React from "react"
 import { Link } from "react-router-dom"
 
 const PokemonTile = props => {
-  console.log(props.pokemon)
-  const { name, url, age, vaccination, story, status } = props.pokemon
-
+  console.log(props)
   let statusText
   const convert = (bool) => {
     if (bool) {
-      statusText = 'Availabe'
+      statusText = 'Yes'
     } else {
-      statusText = 'Not available'
+      statusText = 'No'
     }
     return statusText
   }
-  return (
-    <div>
+
+  return (     
+    <div className="member">      
       <Link to={`/pets/pokemon/${props.id}`}>
-        <h3>{name}</h3>
-        <image src={url} alt={name}/>
-        <h4>Age: {age}</h4>
-        <h4>Vaccination's status: {convert(vaccination)}</h4>
-        <h4>{name}'s story: {story}</h4>
-        <h4>Adoption status: {convert(status)}</h4>
+        <h2>{props.name}</h2>        
       </Link>
-      <hr />
+      <div classNam="member-img">
+          <img src={props.imgUrl} alt={props.name} height="400" weight="300" />
+      </div>
+        <p><strong>Age: </strong>{props.age}</p>
+        <p><strong>Vaccination's status: </strong>{convert(props.vaccinationStatus)}</p>
+        <p><strong>{props.name}'s story:</strong> {props.adoptionStory}</p>
+        <p><strong>Adoption status:</strong> {convert(props.adoptionStatus)}</p>
+      <hr />      
     </div>
   )
 }

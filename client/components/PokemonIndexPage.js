@@ -28,10 +28,15 @@ const PokemonIndexPage = props => {
 
   const allPokemon = pokemons.map( pokemon => {
     return (
-      <PokemonTile
+      <PokemonTile className="listItem"
         key = {pokemon.id}
         id = {pokemon.id}
-        pokemon = {pokemon}
+        name = {pokemon.name}
+        imgUrl = {pokemon.imgUrl}
+        age = {pokemon.age}
+        vaccinationStatus = {pokemon.vaccinationStatus}
+        adoptionStatus = {pokemon.adoptionStatus}
+        adoptionStory = {pokemon.adoptionStory}
       />
     )
   })
