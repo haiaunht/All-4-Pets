@@ -23,16 +23,6 @@ const PuppiesShowPage = (props) => {
     getPuppy()
   },[])
 
-  let statusText
-  const convert = (bool) => {
-    if (bool) {
-      statusText = 'Yes'
-    } else {
-      statusText = 'No'
-    }
-    return statusText
-  }
-
   return (
     <div className="showPokemon">
       <div>
@@ -44,9 +34,9 @@ const PuppiesShowPage = (props) => {
       <div className="member-details">
         <ul>
           <li><strong>Age: </strong>{puppy.age}</li>
-          <li><strong>Vaccination's status: </strong>{convert(puppy.vaccinationStatus)}</li>
+          <li><strong>Vaccination's status: </strong>{puppy.vaccinationStatus}</li>
           <li><strong>{puppy.name}'s story:</strong> {puppy.adoptionStory}</li>
-          <li><strong>Adoption status:</strong> {convert(puppy.adoptionStatus)}</li>
+          <li><strong>Adoption status:</strong> {puppy.adoptionStatus}</li>
         </ul>
       </div>
     </div>

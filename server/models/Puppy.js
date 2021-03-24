@@ -4,15 +4,15 @@ const pool = new pg.Pool({
 })
 
 class Puppy {
-  constructor({id, name, imgUrl, img_url, age, vaccinationStatus, vaccination_status, adoptionStory, adoption_story, adoptionStatus, adoption_status, type_id }) {
+  constructor({id, name, imgUrl, img_url, age, vaccinationStatus, vaccination_status, adoptionStory, adoption_story, adoptionStatus, adoption_status, type_id, typeId }) {
     this.id = id
     this.name = name
     this.imgUrl = imgUrl || img_url
     this.age = age
-    this.vaccinationStatus = vaccinationStatus || vaccination_status
+    this.vaccinationStatus = (vaccinationStatus || vaccination_status)  ? "Yes" : "No"
     this.adoptionStory = adoptionStory || adoption_story
-    this.adoptionStatus = adoptionStatus || adoption_status
-    this.type_id = type_id
+    this.adoptionStatus = ( adoption_status  || adoptionStatus) ? "Yes" : "No"
+    this.type_id = type_id || typeId
   }
 
   static async findAll() {
@@ -20,7 +20,6 @@ class Puppy {
       const client = await pool.connect()
       const result = await client.query("SELECT * FROM adoptable_pets WHERE type_id = 1;")
       const puppiesData = result.rows
-      console.log(puppiesData)
       const puppies = puppiesData.map(puppy => new this(puppy))
       client.release()
       return puppies

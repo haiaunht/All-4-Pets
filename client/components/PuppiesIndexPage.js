@@ -12,7 +12,6 @@ const PuppiesIndexPage = props => {
         throw(error)
       }
       const body = await response.json()
-      console.log(body.puppies)
       setPuppies(body.puppies)
     } catch(err) {
       console.log(`Error in fetch: ${err.message}`)
