@@ -3,6 +3,7 @@ import express from "express"
 const clientRouter = new express.Router()
 
 const clientRoutes = [
+  "/",
   "/pets",
   "/pets/puppies",
   "/pets/puppies/:id",

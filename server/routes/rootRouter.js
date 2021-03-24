@@ -1,5 +1,6 @@
 import express from "express"
 import clientRouter from "./clientRouter.js"
+
 import pokemonRouter from "./api/v1/PokemonRouter.js"
 
 const rootRouter = new express.Router()
