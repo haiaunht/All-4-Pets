@@ -1,10 +1,7 @@
-import { runInThisContext } from "node:vm"
 import pg from "pg"
-
 const pool = new pg.Pool({
   connectionString: "postgres://postgres:password@localhost:5432/pokedex" 
 })
-
 class Pokemon {
   constructor({id, name, imgUrl, img_url, age, vaccinationStatus, vaccination_status, adoptionStory, adoption_story, adoptionStatus, adoption_status, type_id }) {
     this.id = id
@@ -16,32 +13,30 @@ class Pokemon {
     this.adoptionStatus = adoptionStatus || adoption_status
     this.type_id = type_id
   }
-
   static async findAll() {
     try {
       const client = await pool.connect()
-      const result = await client.query("SELECT * FROM pet_types JOIN adoptable_pets ON pet_types.id = adoptable_pets.type_id;")
-
+      const result = await client.query("SELECT * FROM adoptable_pets WHERE type_id = 2;")
       const pokemonData = result.rows
-      const pokemon = pokemonData.map(note => new this(note))
-
+      const pokemons = pokemonData.map(poke => new this(poke))
       client.release()
-
-      return pokemon
+      return pokemons
     } catch(err) {
       console.log(err)
       pool.end()
-      //throw(err)
+    }
+  }  
+  static async findById(id) {
+    try {
+      const client = await pool.connect()      
+      const result = await client.query("SELECT * FROM adoptable_pets WHERE id= $1", [id])
+      const pokemoncute = new this(result.rows[0])
+      client.release()
+      return pokemoncute
+    } catch (error) {
+      console.error(`Error: ${error}`)
+      pool.end()
     }
   }
-
-  static async findById() {
-    try {
-
-    } catch {
-      console.log(err)
-      pool.end()
-      //throw(err)
-    }    
-  }
 }
+export default Pokemon
