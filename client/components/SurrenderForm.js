@@ -31,7 +31,7 @@ const SurrenderForm = (props) => {
         throw(error)
       }
       const body = await response.json()
-      console.log("Posted Successfully!", body.newSurrenderedPet)
+      setNewSurrenderedPet(body.newSurrenderedPet)
       setSubmitSuccessful(true)
     } catch(error){
       console.error(`Error in Fetch: ${error.message}`)

@@ -7,7 +7,6 @@ const surrenderedPetsRouter = new express.Router()
 surrenderedPetsRouter.get("/", async (req, res) => {
   try{
     const surrenderedPets = await SurrenderedPets.findAll()
-    // console.log(surrenderedPetsRouter)
     res.status(200).json({ surrenderedPets })
   } catch(error) {
     console.error(error)

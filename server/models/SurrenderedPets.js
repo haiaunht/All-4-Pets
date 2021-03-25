@@ -46,7 +46,6 @@ const pool = new pg.Pool({
   
         const result = await client.query("SELECT * FROM pet_surrender_applications ORDER BY id DESC LIMIT 1")
         const newPet = result.rows[0]
-        console.log(newPet)
         this.id = newPet.id
   
         client.release()
@@ -55,7 +54,6 @@ const pool = new pg.Pool({
       } catch (error) {
         console.error(error)
         pool.end()
-        // return false
       }
     }
   }
