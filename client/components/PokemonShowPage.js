@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { Redirect } from "react-router-dom"
+import AdoptionForm from "./AdoptionsForm"
 
 const PokemonShowPage = props => {
   const [pokemon, setPokemon] = useState({})
@@ -46,6 +47,7 @@ const PokemonShowPage = props => {
         <p>Vaccination: {pokemon.vaccinationStatus}</p>
         <p>{pokemon.adoptionStory}</p>
         <a onClick={toggleForm}>Adopt Me!</a>
+        <AdoptionForm />
       </div>
     </div>
   )
