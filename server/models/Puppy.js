@@ -1,4 +1,5 @@
 import pg from "pg"
+
 const pool = new pg.Pool({
   connectionString: "postgres://postgres:password@localhost:5432/pokedex" 
 })
@@ -19,8 +20,10 @@ class Puppy {
     try {
       const client = await pool.connect()
       const result = await client.query("SELECT * FROM adoptable_pets WHERE type_id = 1;")
+
       const puppiesData = result.rows
       const puppies = puppiesData.map(puppy => new this(puppy))
+
       client.release()
       return puppies
     } catch(err) {
@@ -32,9 +35,11 @@ class Puppy {
   static async findById(id) {
     try {
       const client = await pool.connect()      
-      const result = await client.query("SELECT * FROM adoptable_pets WHERE id = $1", [id])
+      const result = await client.query("SELECT * FROM adoptable_pets WHERE type_id = 1 AND id = $1", [id])
+
       const puppiescute = new this(result.rows[0])
       client.release()
+
       return puppiescute
     } catch (error) {
       console.error(`Error: ${error}`)

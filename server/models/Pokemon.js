@@ -5,23 +5,25 @@ const pool = new pg.Pool({
 })
 
 class Pokemon {
-  constructor({id, name, imgUrl, img_url, age, vaccinationStatus, vaccination_status, adoptionStory, adoption_story, adoptionStatus, adoption_status, type_id }) {
+  constructor({id, name, imgUrl, img_url, age, vaccinationStatus, vaccination_status, adoptionStory, adoption_story, adoptionStatus, adoption_status, type_id, typeId}) {
     this.id = id
     this.name = name
     this.imgUrl = imgUrl || img_url
     this.age = age
-    this.vaccinationStatus = vaccinationStatus || vaccination_status
+    this.vaccinationStatus = vaccinationStatus || vaccination_status ? "Yes" : "No"
     this.adoptionStory = adoptionStory || adoption_story
-    this.adoptionStatus = adoptionStatus || adoption_status
-    this.type_id = type_id
+    this.adoptionStatus = adoptionStatus || adoption_status ? "Yes" : "No"
+    this.type_id = typeId || type_id
   }
 
   static async findAll() {
     try {
       const client = await pool.connect()
       const result = await client.query("SELECT * FROM adoptable_pets WHERE type_id = 2;")
+
       const pokemonData = result.rows
       const pokemons = pokemonData.map(poke => new this(poke))
+
       client.release()
       return pokemons
     } catch(err) {
@@ -33,9 +35,11 @@ class Pokemon {
   static async findById(id) {
     try {
       const client = await pool.connect()      
-      const result = await client.query("SELECT * FROM adoptable_pets WHERE id= $1", [id])
+      const result = await client.query("SELECT * FROM adoptable_pets WHERE type_id = 2 AND id= $1", [id])
+
       const pokemoncute = new this(result.rows[0])
       client.release()
+      
       return pokemoncute
     } catch (error) {
       console.error(`Error: ${error}`)

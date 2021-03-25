@@ -2,16 +2,6 @@ import React from "react"
 import { Link } from "react-router-dom"
 
 const PokemonTile = props => {
-  let statusText
-  const convert = bool => {
-    if (bool) {
-      statusText = "Yes"
-    } else {
-      statusText = "No"
-    }
-    return statusText
-  }
-
   return (
     <div className="pet-box">
       <div className="pet-img">
@@ -25,7 +15,7 @@ const PokemonTile = props => {
           <p>
             Age: {props.age}
             <br />
-            Vaccination: {convert(props.vaccinationStatus)}
+            Vaccination: {props.vaccinationStatus}
           </p>
         </div>
       </div>
@@ -35,4 +25,5 @@ const PokemonTile = props => {
     </div>
   )
 }
+
 export default PokemonTile

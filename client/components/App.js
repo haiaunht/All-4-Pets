@@ -1,7 +1,6 @@
 import React from "react"
 import { hot } from "react-hot-loader/root"
 import { Route, Switch, BrowserRouter } from "react-router-dom"
-
 import Navbar from "./Navbar"
 import Pets from "./Pets"
 import PuppiesIndexPage from "./PuppiesIndexPage"
@@ -10,6 +9,7 @@ import PokemonIndexPage from "./PokemonIndexPage"
 import PokemonShowPage from "./PokemonShowPage"
 import SurrenderForm from "./SurrenderForm"
 import About from "./About"
+import PageNotFound from "./PageNotFound"
 import "regenerator-runtime/runtime"
 
 const App = props => {
@@ -26,6 +26,7 @@ const App = props => {
           <Route exact path="/pets/pokemon/:id" component={PokemonShowPage} />
           <Route exact path="/adoptions/new" component={SurrenderForm} />
           <Route exact path="/about" component={About} />
+          <Route path="/" component={PageNotFound} />
         </Switch>
       </BrowserRouter>
     </div>

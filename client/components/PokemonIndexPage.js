@@ -12,7 +12,6 @@ const PokemonIndexPage = props => {
         throw error
       }
       const body = await response.json()
-      console.log(body.pokemon)
       setPokemons(body.pokemon)
     } catch (err) {
       console.log(`Error in fetch: ${err.message}`)

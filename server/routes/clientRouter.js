@@ -10,7 +10,8 @@ const clientRoutes = [
   "/pets/pokemon",
   "/pets/pokemon/:id",
   "/adoptions/new",
-  "/about"
+  "/about",
+  "/404"
 ]
 clientRouter.get(clientRoutes, (req, res) => {
   res.render("home")

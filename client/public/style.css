@@ -577,3 +577,147 @@
   border: none;
   font-size: 15px;
 }
+
+/* 404 Page Not Found */
+#page-not-found {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(0deg, #fff, #abcdef);
+  z-index: 100;
+}
+.sky {
+  position: relative;
+  widows: 100%;
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sky h2 {
+  font-size: 16em;
+  color: #fff;
+  text-shadow: 15px 15px 0 rgba(0, 0, 0, 0.1);
+}
+.sky h2 span {
+  display: inline-block;
+  animation: animate 3s ease-in-out infinite;
+}
+.sky h2 span:nth-child(2) {
+  animation-delay: 0.33s;
+}
+.sky h2 span:nth-child(3) {
+  animation-delay: 0.67s;
+}
+@keyframes animate {
+  0%,
+  100% {
+    transform: translateY(-50px);
+  }
+  50% {
+    transform: translateY(50px);
+  }
+}
+.ocean {
+  padding: 100px;
+  height: 30vh;
+  background: linear-gradient(0deg, #074888, #ffffff);
+  box-shadow: inset 0 20px 10px #fff;
+  text-align: center;
+}
+.ocean h2 {
+  color: #fff;
+  font-size: 2em;
+  margin-bottom: 40px;
+}
+.ocean a {
+  font-size: 20px;
+  color: #fff;
+  background-color: #e91e63;
+  display: inline-block;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: 0.5s;
+  width: 250px;
+  height: 50px;
+  line-height: 50px;
+  letter-spacing: 1px;
+}
+.ocean a:hover {
+  background-color: #fff;
+  transform: rotateY(360deg) scale(1.5);
+  color: #e91e63;
+}
+.lugia {
+  position: absolute;
+  bottom: 100px;
+  left: 100px;
+  max-width: 400px;
+  animation: lugiaFlyingAnimation 80s ease-in-out infinite;
+}
+@keyframes lugiaFlyingAnimation {
+  0% {
+    transform: translate(0, -50px);
+  }
+  49% {
+    transform: translate(70vw, -50px);
+  }
+  50% {
+    transform: translate(70vw, -50px) scaleX(-1);
+  }
+  100% {
+    transform: translate(0, -50px) scaleX(-1);
+  }
+}
+.wave {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background: url(./images/wave.png);
+  background-position: bottom;
+  background-size: 500px 50px;
+}
+.wave.wave1 {
+  animation: animate1 30s linear infinite;
+  z-index: 1113;
+  opacity: 1;
+  animation-delay: 0s;
+  bottom: 0;
+}
+.wave.wave2 {
+  animation: animate2 15s linear infinite;
+  z-index: 1112;
+  opacity: 0.5;
+  animation-delay: -5s;
+  bottom: 10px;
+}
+.wave.wave3 {
+  animation: animate1 10s linear infinite;
+  z-index: 1111;
+  opacity: 0.2;
+  animation-delay: -2s;
+  bottom: 15px;
+}
+.wave.wave4 {
+  animation: animate2 5s linear infinite;
+  z-index: 1110;
+  opacity: 0.7;
+  animation-delay: -5s;
+  bottom: 20px;
+}
+@keyframes animate1 {
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: 1000px;
+  }
+}
+@keyframes animate2 {
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: -1000px;
+  }
+}

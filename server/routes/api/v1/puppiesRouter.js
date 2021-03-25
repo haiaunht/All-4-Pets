@@ -22,4 +22,5 @@ puppiesRouter.get("/:id", async (req, res) => {
     res.status(500).json({ errors: error })
   }
 })
+
 export default puppiesRouter
