@@ -9,6 +9,7 @@ const PuppiesShowPage = props => {
   const toggleForm = () => {
     setShowAdoptionForm(current => !current)
   }
+  
   const getPuppy = async () => {
     try {
       const puppyId = props.match.params.id
