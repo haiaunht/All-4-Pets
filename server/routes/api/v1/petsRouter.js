@@ -7,7 +7,6 @@ const petsRouter = new express.Router()
 petsRouter.get("/", async (req, res) => {
   try {
     const pets = await Pets.findAll()
-    console.log(pets)
     res.status(200).json({ pets: pets })
   } catch (error) {
     console.error(error)
