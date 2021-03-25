@@ -2,7 +2,6 @@ import React, {useState} from "react"
 
 const AdoptionForm = (props) => {
   const [submitSuccessful, setSubmitSuccessful] = useState(null)
-
   const [errors, setErrors] = useState("")
 
   const [newApplication, setNewApplication] = useState({

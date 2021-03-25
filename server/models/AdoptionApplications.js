@@ -35,7 +35,7 @@ const pool = new pg.Pool({
     async save() {
       try {
         const client = await pool.connect()
-        const query = "INSERT INTO pet_surrender_applications (name, phone_number, email, home_status, application_status) VALUES ($1, $2, $3, $4, $5)"
+        const query = "INSERT INTO adoption_applications (name, phone_number, email, home_status, application_status) VALUES ($1, $2, $3, $4, $5)"
         const values = [this.name, this.phoneNumber, this.email, this.homeStatus, this.applicationStatus]
         await client.query(query, values)
   
