@@ -1,6 +1,9 @@
 import React, {useState} from "react"
 
 const SurrenderForm = (props) => {
+  const [submitSuccessful, setSubmitSuccessful] = useState(null)
+  const [errors, setErrors] = useState("")
+
   const [newSurrenderedPet, setNewSurrenderedPet] = useState({
     name: "",
     phoneNumber: "",
@@ -13,7 +16,7 @@ const SurrenderForm = (props) => {
     applicationStatus: ""
   })
   
-  const addNewSurrenderedPet = async () =>{
+  const addNewSurrenderedPet = async () => {
     try {
       const response = await fetch("/api/v1/adoptions/new", {
         method: "POST",
@@ -29,8 +32,10 @@ const SurrenderForm = (props) => {
       }
       const body = await response.json()
       console.log("Posted Successfully!", body.newSurrenderedPet)
+      setSubmitSuccessful(true)
     } catch(error){
       console.error(`Error in Fetch: ${error.message}`)
+      setSubmitSuccessful(false)
     }
   }
 
@@ -41,15 +46,42 @@ const SurrenderForm = (props) => {
     })
   }
 
-  const handleSubmit = (e) =>{
+  const handleSubmit = (e) => {
     e.preventDefault()
-    addNewSurrenderedPet()
+    if (newSurrenderedPet.name !=="" && newSurrenderedPet.phoneNumber !== "" && newSurrenderedPet.email !== ""  && newSurrenderedPet.petName !== "" && newSurrenderedPet.petAge !== "" && newSurrenderedPet.petTypeId !== "" && newSurrenderedPet.petImageUrl !== "") {
+      setErrors("")
+      addNewSurrenderedPet()
+      setNewSurrenderedPet({
+        name: "",
+        phoneNumber: "",
+        email: "",
+        petName: "",
+        petAge: "",
+        petTypeId: "",
+        petImageUrl: "",
+        vaccinationStatus: "",
+        applicationStatus: ""
+      })
+    } else {
+      setErrors('Fill Out ALL * Required Fields!')
+    }
   }
 
-  return (
+  let errorMessage 
+  let required
+  if (errors) {
+    errorMessage = <h3>{errors}</h3>
+    required = "*"
+  }
+
+  if (submitSuccessful) {
+    return(<h3>Your application is in process.</h3>)
+  } else {
+    return (
     <div className="surrender-form">
       <h1>Pet Surrender Form</h1>
       <form onSubmit={handleSubmit}>
+        {errorMessage}
         <h3>Owner Information</h3>
         <label htmlFor="name">
           Name:
@@ -60,6 +92,7 @@ const SurrenderForm = (props) => {
             onChange={handleChange}
             value={newSurrenderedPet.name}
           />
+          {required}
         </label> <br/>
 
         <label htmlFor="phoneNumber">
@@ -73,6 +106,7 @@ const SurrenderForm = (props) => {
             onChange={handleChange}
             value={newSurrenderedPet.phoneNumber}
           />
+          {required}
         </label> <br/>
 
         <label htmlFor="email">
@@ -96,6 +130,7 @@ const SurrenderForm = (props) => {
             onChange={handleChange}
             value={newSurrenderedPet.petName}
           />
+          {required}
         </label> <br/>
 
         <label htmlFor="petAge">
@@ -103,10 +138,12 @@ const SurrenderForm = (props) => {
           <input
             id="petAge"
             name="petAge"
-            type="text"
+            type="number"
+            min="1"
             onChange={handleChange}
             value={newSurrenderedPet.petAge}
           />
+          {required}
         </label> <br/>
 
         <label htmlFor="petTypeId">
@@ -116,6 +153,7 @@ const SurrenderForm = (props) => {
             <option value="1">puppy</option>
             <option value="2">pokemon</option>
           </select>
+          {required}
         </label> <br/>
 
         <label htmlFor="petImageUrl">
@@ -127,23 +165,23 @@ const SurrenderForm = (props) => {
             onChange={handleChange}
             value={newSurrenderedPet.petImageUrl}
           />
+          {required}
         </label> <br/>
 
         <label htmlFor="vaccinationStatus">
           Vaccinated:
-          <input 
-            id="vaccinationStatus"
-            name="vaccinationStatus"
-            type="text"
-            onChange={handleChange}
-            value={newSurrenderedPet.vaccinationStatus}
-          />
+          <select id="vaccinationStatus" name="vaccinationStatus" onChange={handleChange}>
+            <option value=""></option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+          </select>
         </label><br/><br/>
 
         <input className="button" type="submit" value="Submit" />
       </form>
     </div>
-  )
+    )
+  }
 }
 
 export default SurrenderForm
