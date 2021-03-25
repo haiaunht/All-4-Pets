@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import AdoptionForm from "./AdoptionForm"
 
 const PokemonShowPage = props => {
   const [pokemon, setPokemon] = useState({})
@@ -42,6 +43,7 @@ const PokemonShowPage = props => {
   let petClassName = showAdoptionForm ? "pet-container active" : "pet-container"
 
   return (
+    <>
     <div className={petClassName}>
       <div className="pet-content">
         <div>
@@ -54,6 +56,8 @@ const PokemonShowPage = props => {
         <a onClick={toggleForm}>Adopt Me!</a>
       </div>
     </div>
+    <AdoptionForm />
+    </>
   )
 }
 
