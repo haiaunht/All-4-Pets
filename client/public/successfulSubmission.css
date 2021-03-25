@@ -1,0 +1,140 @@
+/* Font Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap");
+
+/* Reset CSS */
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#countdown-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: #abcdef;
+  display: flex;
+}
+
+#countdown-imgBx {
+  position: relative;
+  width: 450px;
+  height: 100%;
+  background: url(./images/pikachu.png);
+  background-size: cover;
+}
+
+#countdown-bx {
+  display: flex;
+  width: calc(100% - 450px);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#countdown-bx h2 {
+  text-align: center;
+  font-size: 1.5em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-weight: 500;
+  line-height: 3em;
+}
+
+#countdown-bx h2 span {
+  font-size: 3em;
+  font-weight: 700;
+}
+
+#countdown-bx h2 strong {
+  color: #edf255;
+}
+
+#countdown-bx h2 span i {
+  font-style: initial;
+  color: #edf255;
+}
+
+#countdown {
+  margin-top: 30px;
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 100%;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#countdown div {
+  position: relative;
+  width: 100px;
+  text-align: center;
+  color: #fff;
+  font-size: 2.5em;
+  font-weight: 500;
+  margin: 0 15px;
+  margin-top: -25px;
+}
+
+#countdown div::before {
+  content: "text";
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  width: 100%;
+  height: 35px;
+  color: #fff;
+  font-size: 0.35em;
+  font-weight: 500;
+  line-height: 35px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+#countdown div#day::before {
+  content: "days";
+}
+#countdown div#hour::before {
+  content: "hours";
+}
+#countdown div#minute::before {
+  content: "minutes";
+}
+#countdown div#second::before {
+  content: "seconds";
+}
+
+#countdown div#second::before,
+#countdown div#second {
+  color: #edf255;
+}
+
+@media (max-width: 1024px) {
+  #countdown-imgBx {
+    display: none;
+  }
+
+  #countdown-bx {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  #countdown-bx h2 {
+    font-size: 1em;
+  }
+
+  #countdown {
+    height: 100px;
+  }
+
+  #countdown div {
+    width: 80px;
+    font-size: 2em;
+    margin: 0;
+    margin-top: -25px;
+  }
+}

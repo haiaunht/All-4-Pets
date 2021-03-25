@@ -37,19 +37,27 @@ const PokemonShowPage = props => {
   let petClassName = showAdoptionForm ? "pet-container active" : "pet-container"
 
   return (
-    <div className={petClassName}>
-      <div className="pet-content">
-        <div>
-          <img key={pokemon.id} src={pokemon.imgUrl} alt={pokemon.name} />
+    <>
+      <div className={petClassName}>
+        <div className="pet-content">
+          <div>
+            <img key={pokemon.id} src={pokemon.imgUrl} alt={pokemon.name} />
+          </div>
+          <h2>{pokemon.name}</h2>
+          <p>Age: {pokemon.age}</p>
+          <p>Vaccination: {pokemon.vaccinationStatus}</p>
+          <p>{pokemon.adoptionStory}</p>
+          <a onClick={toggleForm}>Adopt Me!</a>
         </div>
-        <h2>{pokemon.name}</h2>
-        <p>Age: {pokemon.age}</p>
-        <p>Vaccination: {pokemon.vaccinationStatus}</p>
-        <p>{pokemon.adoptionStory}</p>
-        <a onClick={toggleForm}>Adopt Me!</a>
-        <AdoptionForm />
       </div>
-    </div>
+      <AdoptionForm
+        showAdoptionForm={showAdoptionForm}
+        setShowAdoptionForm={showAdoptionForm}
+        toggleForm={toggleForm}
+        petName={pokemon.name}
+        petImg={pokemon.imgUrl}
+      />
+    </>
   )
 }
 

@@ -5,12 +5,15 @@ import AdoptionForm from "./AdoptionsForm"
 const PuppiesShowPage = props => {
   const [puppy, setPuppy] = useState({})
 
+  const puppyId = props.match.params.id
+  let urlPath = `pets/puppies/${puppyId}`
+
   const [showAdoptionForm, setShowAdoptionForm] = useState(false)
 
   const toggleForm = () => {
     setShowAdoptionForm(current => !current)
   }
-  
+
   const getPuppy = async () => {
     try {
       const puppyId = props.match.params.id
@@ -38,19 +41,30 @@ const PuppiesShowPage = props => {
   let petClassName = showAdoptionForm ? "pet-container active" : "pet-container"
 
   return (
-    <div className={petClassName}>
-      <div className="pet-content">
-        <div>
-          <img key={puppy.id} src={puppy.imgUrl} alt={puppy.name} />
+    <>
+      <div className={petClassName}>
+        <div className="pet-content">
+          <div>
+            <img key={puppy.id} src={puppy.imgUrl} alt={puppy.name} />
+          </div>
+          <h2>{puppy.name}</h2>
+          <p>Age: {puppy.age}</p>
+          <p>Vaccination: {puppy.vaccinationStatus}</p>
+          <p>{puppy.adoptionStory}</p>
+          <a onClick={toggleForm}>Adopt Me!</a>
         </div>
-        <h2>{puppy.name}</h2>
-        <p>Age: {puppy.age}</p>
-        <p>Vaccination: {puppy.vaccinationStatus}</p>
-        <p>{puppy.adoptionStory}</p>
-        <a onClick={toggleForm}>Adopt Me!</a>
-        <AdoptionForm />
       </div>
-    </div>
+      <div className="adoptionForm">
+        <AdoptionForm
+          showAdoptionForm={showAdoptionForm}
+          urlPath={urlPath}
+          petClassName={petClassName}
+          toggleForm={toggleForm}
+          petName={puppy.name}
+          petImg={puppy.imgUrl}
+        />
+      </div>
+    </>
   )
 }
 

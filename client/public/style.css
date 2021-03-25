@@ -385,11 +385,11 @@
   transition: 0.5s;
 }
 
-.pet-container.active {
+/* .pet-container.active {
   filter: blur(20px);
   pointer-events: none;
   user-select: none;
-}
+} */
 
 .pet-container .pet-content {
   position: absolute;
@@ -445,6 +445,20 @@
 }
 
 /* Modal - Form*/
+
+.adoptionForm {
+  z-index: 100;
+}
+
+#successfulMessage {
+  position: absolute;
+  bottom: 10vh;
+  text-align: center;
+  margin: 0 auto;
+  width: 100%;
+  color: #abcedf;
+  font-size: 2em;
+}
 
 .modal {
   position: fixed;
@@ -547,6 +561,11 @@
   background-color: #fff;
 }
 
+.form-box h6 {
+  color: #e91e63;
+  margin-bottom: 10px;
+}
+
 .form-box label {
   font-weight: bold;
   color: #abcdef;
@@ -561,8 +580,13 @@
 }
 
 .form-box select {
-  margin-bottom: 20px;
-  border: 2px solid #abcdef;
+  margin: 5px 0 15px;
+  border: none;
+  background-color: #abcdef;
+  color: #fff;
+  width: 175px;
+  height: 30px;
+  padding: 0 10px;
 }
 
 .form-box input[type="submit"] {
@@ -571,6 +595,28 @@
   border: none;
   border-bottom: 2px solid #abcdef;
   width: 80%;
+}
+
+.form-box form span {
+  color: #e91e63;
+  position: absolute;
+  right: 30px;
+  padding: 5px 0;
+  pointer-events: none;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.form-box form #home-status + span {
+  color: #e91e63;
+  position: absolute;
+  right: 115px;
+  padding: 5px 0;
+  pointer-events: none;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
 }
 
 #submit-btn {
