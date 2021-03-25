@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react"
+import { Redirect } from "react-router-dom"
 
 const PokemonShowPage = props => {
   const [pokemon, setPokemon] = useState({})
-
   const [showAdoptionForm, setShowAdoptionForm] = useState(false)
 
   const toggleForm = () => {
@@ -29,14 +29,8 @@ const PokemonShowPage = props => {
     getPokemon()
   }, [])
 
-  let statusText
-  const convert = bool => {
-    if (bool) {
-      statusText = "Yes"
-    } else {
-      statusText = "No"
-    }
-    return statusText
+  if (!pokemon) {
+    return <Redirect to="/404" />
   }
 
   let petClassName = showAdoptionForm ? "pet-container active" : "pet-container"

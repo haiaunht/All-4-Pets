@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { Redirect } from "react-router-dom"
 
 const PuppiesShowPage = props => {
   const [puppy, setPuppy] = useState({})
@@ -8,6 +9,7 @@ const PuppiesShowPage = props => {
   const toggleForm = () => {
     setShowAdoptionForm(current => !current)
   }
+  
   const getPuppy = async () => {
     try {
       const puppyId = props.match.params.id
@@ -18,7 +20,6 @@ const PuppiesShowPage = props => {
         throw error
       }
       const responseBody = await response.json()
-      console.log(responseBody)
       setPuppy(responseBody.puppiescute)
     } catch (err) {
       console.error(`Error in Fetch: ${err.message}`)
@@ -28,6 +29,10 @@ const PuppiesShowPage = props => {
   useEffect(() => {
     getPuppy()
   }, [])
+
+  if (!puppy) {
+    return <Redirect to="/404" />
+  }
 
   let petClassName = showAdoptionForm ? "pet-container active" : "pet-container"
 

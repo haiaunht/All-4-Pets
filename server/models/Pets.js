@@ -20,8 +20,7 @@ class Pets {
 
       const pets = petsData.map(pet => {
         return new this(pet)
-      })
-      console.log(pets)
+      })      
       client.release()
 
       return pets
