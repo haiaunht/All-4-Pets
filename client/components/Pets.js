@@ -59,9 +59,9 @@ const Pets = () => {
         <div className="text-box">
           <h2>More than a pet</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda totam unde ipsam
-            aliquam facilis et perferendis labore amet esse ab, distinctio optio inventore itaque
-            illum nihil sequi iusto! Cumque, dicta!
+            They love you unconditionally and are always excited to see you when you get home. The
+            best thing is that you see them as your best friend too, even when their tail knocks off
+            everything on the coffee table.
           </p>
           {petsLink}
         </div>

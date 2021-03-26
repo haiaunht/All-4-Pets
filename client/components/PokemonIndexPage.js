@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import PokemonTile from "./PokemonTile"
+import Footer from "./Footer"
 
 const PokemonIndexPage = props => {
   const [pokemons, setPokemons] = useState([])
@@ -38,19 +39,23 @@ const PokemonIndexPage = props => {
   })
 
   return (
-    <div className="container">
-      <div className="content">
-        <div className="max-width-800">
-          <h3>Your best friend</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum labore accusantium fuga
-            quo soluta explicabo quae quas, consequatur ea ad voluptatem porro fugit eligendi
-            cupiditate id ipsa, quam placeat deserunt.
-          </p>
+    <>
+      <div className="container">
+        <div className="content">
+          <div className="max-width-800">
+            <h3>Your best friend</h3>
+            <p>
+              'Til the end I will be with you <br />
+              We will go where our dreams come true <br />
+              All the time that we have been through <br />
+              You will always be my best friend
+            </p>
+          </div>
+          <div className="pet">{allPokemon}</div>
         </div>
-        <div className="pet">{allPokemon}</div>
       </div>
-    </div>
+      <Footer />
+    </>
   )
 }
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import PuppyTile from "./PuppyTile"
+import Footer from "./Footer"
 
 const PuppiesIndexPage = props => {
   const [puppies, setPuppies] = useState([])
@@ -38,19 +39,18 @@ const PuppiesIndexPage = props => {
   })
 
   return (
-    <div className="container">
-      <div className="content">
-        <div className="max-width-800">
-          <h3>Adorable Puppies</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum labore accusantium fuga
-            quo soluta explicabo quae quas, consequatur ea ad voluptatem porro fugit eligendi
-            cupiditate id ipsa, quam placeat deserunt.
-          </p>
+    <>
+      <div className="container">
+        <div className="content">
+          <div className="max-width-800">
+            <h3>Adorable Puppies</h3>
+            <p>The only member of your family that you will actually like</p>
+          </div>
+          <div className="pet">{allPuppies}</div>
         </div>
-        <div className="pet">{allPuppies}</div>
       </div>
-    </div>
+      <Footer />
+    </>
   )
 }
 

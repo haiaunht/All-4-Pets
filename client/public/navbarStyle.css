@@ -1,0 +1,385 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+#app div .section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #daccb4;
+  transition: 0.5s;
+}
+
+#app div .section.Puppies {
+  background-color: #daccb4;
+}
+
+#app div .section.Pokemon {
+  background-color: #f1ccd5;
+}
+
+/* navbar */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.navbar .brand {
+  position: relative;
+  font-size: 2em;
+  font-weight: 700;
+}
+
+.navbar ul {
+  position: relative;
+  display: flex;
+  list-style: none;
+}
+
+.navbar ul li a {
+  display: inline-block;
+  color: #555;
+  font-weight: 400;
+  margin-left: 20px;
+  text-decoration: none;
+  padding: 10px 20px;
+}
+
+.navbar ul li:hover a {
+  background-color: #fff;
+}
+
+.navbar.scroll {
+  background-color: #abcdef;
+}
+
+.navbar.scroll .brand {
+  position: relative;
+  font-size: 2em;
+  font-weight: 700;
+  color: #fff;
+}
+
+.navbar.scroll ul li a {
+  display: inline-block;
+  color: #fff;
+  font-weight: 400;
+  margin-left: 20px;
+  text-decoration: none;
+  padding: 10px 20px;
+}
+
+.navbar.scroll ul li:hover a {
+  background-color: #fff;
+  color: #abcdef;
+}
+
+/* index-page */
+
+.section .content {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section .content .text-box {
+  position: relative;
+  max-width: 600px;
+}
+
+.section .content .text-box h2 {
+  color: #333;
+  font-size: 3em;
+  line-height: 1.5em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.section .content .text-box p {
+  margin-top: 10px;
+  letter-spacing: 1px;
+}
+
+.section .content .text-box a {
+  color: #555;
+}
+
+.section .content .text-box a {
+  display: inline-block;
+  margin-top: 30px;
+  margin-right: 20px;
+  padding: 8px 20px;
+  background-color: #fff;
+  border-radius: 40px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #333;
+  transition: 0.5s;
+}
+
+.section .content .text-box a:hover {
+  background-color: #333;
+  transform: rotateY(360deg) scale(1.2);
+  color: #fff;
+}
+
+.section .content .image-box {
+  width: 600px;
+  display: flex;
+  padding-right: 50px;
+  margin-top: 50px;
+  justify-content: flex-end;
+}
+
+.section .content .image-box img {
+  max-width: 300px;
+}
+
+.pet-thumbnail {
+  position: absolute;
+  left: 45%;
+  bottom: 40px;
+  transform: translate(-50%, -50%);
+  display: flex;
+}
+
+.pet-thumbnail li {
+  text-decoration: none;
+  display: inline-block;
+  margin: 0 20px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.pet-thumbnail li:hover {
+  transform: translateY(-15px);
+}
+
+.pet-thumbnail li img {
+  max-width: 150px;
+  max-height: 150px;
+}
+
+.social-icons {
+  position: absolute;
+  top: 50%;
+  right: 30px;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  flex-direction: column;
+}
+
+.social-icons li a {
+  display: inline-block;
+  margin: 15px 0;
+  color: #aaa;
+  font-size: 2em;
+  transition: 0.5s;
+}
+
+.social-icons li:hover a {
+  transform: rotateY(360deg) scale(1.5);
+  color: #fff;
+}
+
+@media (max-width: 1150px) {
+  /* #app div {
+    padding: 40px;
+  } */
+
+  #app div .section {
+    padding: 40px;
+    padding-bottom: 140px;
+  }
+
+  .navbar {
+    padding: 20px 40px;
+  }
+
+  .navbar.scroll .brand,
+  .navbar .brand {
+    position: relative;
+    font-size: 1.5em;
+    font-weight: 700;
+  }
+
+  .navbar ul,
+  .navbar.scroll ul {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .navbar ul.active,
+  .navbar.scroll ul.active {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .navbar ul li a,
+  .navbar.scroll ul li a {
+    display: inline-block;
+    color: #333;
+    font-weight: 400;
+    margin-left: 0;
+    text-emphasis: none;
+    font-size: 2em;
+    margin: 15px 0;
+  }
+
+  .navbar ul li a:hover,
+  .navbar.scroll ul li a:hover {
+    background-color: #abcdef;
+    color: #fff;
+  }
+
+  /* Begin: Menu-btn */
+  .menu-btn {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .menu-btn__burger {
+    width: 50px;
+    height: 6px;
+    background: #555;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s ease-in-out;
+    margin-left: 15px;
+    z-index: 2;
+  }
+
+  .menu-btn__burger::before,
+  .menu-btn__burger::after {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 6px;
+    background: #555;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s ease-in-out;
+  }
+
+  .menu-btn__burger::before {
+    transform: translateY(-16px);
+  }
+
+  .menu-btn__burger::after {
+    transform: translateY(16px);
+  }
+
+  /* Menu Button Burger Animation */
+
+  .menu-btn.active .menu-btn__burger {
+    transform: translateX(-50px);
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .menu-btn.active .menu-btn__burger::before {
+    transform: rotate(45deg) translate(35px, -35px);
+  }
+  .menu-btn.active .menu-btn__burger::after {
+    transform: rotate(-45deg) translate(35px, 35px);
+  }
+
+  /* End : Menu Button */
+
+  .section .content {
+    flex-direction: column;
+    margin-top: 80px;
+  }
+
+  .section .content .text-box {
+    position: relative;
+    max-width: 100%;
+  }
+
+  .section .content .text-box h2 {
+    font-size: 3em;
+  }
+
+  .section .content .text-box a {
+    font-size: 14px;
+    padding: 8px 15px;
+  }
+
+  .section .content .image-box {
+    width: 100%;
+    display: flex;
+    padding-right: 0;
+    margin-top: 0;
+    margin-top: 50px;
+    justify-content: center;
+  }
+
+  .section .content .image-box img {
+    max-width: 150px;
+  }
+
+  .section.Pokemon .content .image-box img {
+    max-width: 292px;
+  }
+
+  .pet-thumbnail {
+    position: absolute;
+    left: 50%;
+    bottom: 40px;
+    transform: translate(-50%, -50%);
+    display: flex;
+  }
+
+  .pet-thumbnail li img {
+    max-width: 120px;
+    max-height: 120px;
+  }
+
+  .social-icons {
+    right: 0;
+    width: 50px;
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
